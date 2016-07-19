@@ -29,7 +29,7 @@ export default class Cell extends React.Component {
                 className='cell'
                 style={this.createCellStyle(this.props.x, this.props.y)}
             >
-                {this.props.x}, {this.props.y}
+            .
             </div>
 
         )

@@ -19,7 +19,7 @@ export default class Game extends React.Component {
 
         this.state = {
             gameTime: 0,
-            color: 'red',
+            color: 'green',
             snake: snake,
             direction: 'LEFT'
         }
@@ -59,6 +59,7 @@ export default class Game extends React.Component {
                     color = _.sample(['red', 'green', 'blue', 'yellow']);
                     break;
                 case keys.ENTER:
+                    this.restart();
                     break;
             }
             this.setState({color});
@@ -70,6 +71,7 @@ export default class Game extends React.Component {
             snake.removeTail();
             snake.addToHead(newHead);
         } else {
+            this.setState({ color: 'red'});
             alert('YOU LOSE');
             clearInterval(this.gameIntervals);
         }
