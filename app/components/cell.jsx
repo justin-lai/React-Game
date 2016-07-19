@@ -6,21 +6,36 @@ export default class Cell extends React.Component {
     constructor(props){
         super(props);
     }
-    isActiveCell(x, y){
-        var snake = this.props.snake;
-        return snake.contains([x, y]);
+
+    cellColor(x ,y) {
+        if (this.isSnakeCell(x, y)) {
+            return this.props.color;
+        } else if (this.isFoodCell(x, y)) {
+            return 'orange';
+        } else {
+            return 'blue';
+        }
     }
+
+    isSnakeCell(x, y){
+        return this.props.snake.contains([x, y]);
+    }
+
+    isFoodCell(x, y){
+        return x === this.props.food[0] && y === this.props.food[1];
+    }
+
     createCellStyle(x, y){
         return {
             display: 'inline-block',
             margin: '0px 0px 0px 0px',
             padding: '0px 0px 0px 0px',
-            width: '50px',
-            minWidth: '50px',
-            height: '50px',
-            minHeight: '50px',
-            border:'solid 1px black',
-            backgroundColor: this.isActiveCell(x, y) ? this.props.color : 'unset'
+            width: '20px',
+            minWidth: '20px',
+            height: '20px',
+            minHeight: '20px',
+            // border:'solid 1px black',
+            backgroundColor: this.cellColor(x, y)
         }
     }
     render(){
@@ -29,7 +44,7 @@ export default class Cell extends React.Component {
                 className='cell'
                 style={this.createCellStyle(this.props.x, this.props.y)}
             >
-            .
+
             </div>
 
         )

@@ -1,2 +1,2 @@
 export const gameTickSize = 100;
-export const gridSize = 10;
+export const gridSize = 20;

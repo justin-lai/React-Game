@@ -13,6 +13,8 @@ export default class Row extends React.Component {
             <div 
                 className='row'
                 style={{
+                    height: '20px',
+                    minHeight: '20px',
                     margin: '0px 0px 0px 0px',
                     padding: '0px 0px 0px 0px'
                 }}
@@ -26,6 +28,7 @@ export default class Row extends React.Component {
                             color={this.props.color}
                             position={this.props.position}
                             snake={this.props.snake} 
+                            food={this.props.food}
                         />;
                     })
                 }
