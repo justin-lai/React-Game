@@ -7,7 +7,8 @@ export default class Cell extends React.Component {
         super(props);
     }
     isActiveCell(x, y){
-        return x === this.props.position[0] && y === this.props.position[1]
+        var snake = this.props.snake;
+        return snake.contains([x, y]);
     }
     createCellStyle(x, y){
         return {

@@ -24,7 +24,8 @@ export default class Row extends React.Component {
                             y={this.props.y}
                             x={x}
                             color={this.props.color}
-                            position={this.props.position} 
+                            position={this.props.position}
+                            snake={this.props.snake} 
                         />;
                     })
                 }

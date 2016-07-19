@@ -18,6 +18,7 @@ export default class Grid extends React.Component {
                             y={y} 
                             position={this.props.position} 
                             color={this.props.color}
+                            snake={this.props.snake}
                         />;
                     })
                 }
