@@ -60,16 +60,24 @@ export default class Game extends React.Component {
             var newHead = _.clone(snake.head.value);
             switch (e.keyCode){
                 case keys.LEFT:
-                    this.setState({ direction: 'LEFT' });
+                    if (this.state.direction !== 'RIGHT') {
+                        this.setState({ direction: 'LEFT' });
+                    }
                     break;
                 case keys.RIGHT:
-                    this.setState({ direction: 'RIGHT' })
+                    if (this.state.direction !== 'LEFT') {
+                        this.setState({ direction: 'RIGHT' })
+                    }
                     break;
                 case keys.DOWN:
-                    this.setState({ direction: 'DOWN' })
+                    if (this.state.direction !== 'UP') {
+                        this.setState({ direction: 'DOWN' })
+                    }
                     break;
                 case keys.UP:
-                    this.setState({ direction: 'UP' })
+                    if (this.state.direction !== 'DOWN') {
+                        this.setState({ direction: 'UP' })
+                    }
                     break;
                 case keys.SPACEBAR:
                     break;
@@ -82,6 +90,7 @@ export default class Game extends React.Component {
     }
 
     isValidMove(snake, newHead) {
+        // check if the snake collides with itself
         if (!snake.contains(newHead)) {
             // if the snake eats the food, do not remove its tail
             if (newHead[0] === this.state.food[0] && newHead[1] === this.state.food[1]) {
@@ -102,6 +111,7 @@ export default class Game extends React.Component {
 
     setFoodPosition(snake) {
         var x, y;
+        // find a coordinate position that does not generate on top of the snake
         do {
             x = Math.floor(Math.random() * gridSize);
             y = Math.floor(Math.random() * gridSize);
