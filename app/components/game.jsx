@@ -9,7 +9,7 @@ export default class Game extends React.Component {
     constructor(props){
         super(props);
 
-        var snake = new DoublyLinkedList;
+        let snake = new DoublyLinkedList;
         snake.addToTail([10, 10]);
         snake.addToTail([11, 10]);
 
@@ -32,7 +32,7 @@ export default class Game extends React.Component {
     start() {
         clearInterval(this.gameIntervals);
 
-        var newSnake = new DoublyLinkedList;
+        let newSnake = new DoublyLinkedList;
         newSnake.addToTail([10, 10]);
         newSnake.addToTail([11, 10]);
 
@@ -55,9 +55,9 @@ export default class Game extends React.Component {
 
     handleKeyDown(e){
         window.addEventListener('keydown', (e)=>{
-            var color = this.state.color;
-            var snake = _.clone(this.state.snake);
-            var newHead = _.clone(snake.head.value);
+            let color = this.state.color;
+            let snake = _.clone(this.state.snake);
+            let newHead = _.clone(snake.head.value);
             switch (e.keyCode){
                 case keys.LEFT:
                     if (this.state.direction !== 'RIGHT') {
@@ -110,7 +110,7 @@ export default class Game extends React.Component {
     }
 
     setFoodPosition(snake) {
-        var x, y;
+        let x, y;
         // find a coordinate position that does not generate on top of the snake
         do {
             x = Math.floor(Math.random() * gridSize);
@@ -120,8 +120,8 @@ export default class Game extends React.Component {
     }
 
     moveSnake() {
-        var snake = _.clone(this.state.snake);    
-        var newHead = _.clone(snake.head.value);    
+        let snake = _.clone(this.state.snake);    
+        let newHead = _.clone(snake.head.value);    
         switch (this.state.direction){
             case 'LEFT':
                 newHead[0] = --newHead[0] < 0 ? gridSize - 1 : newHead[0]; 
@@ -145,8 +145,8 @@ export default class Game extends React.Component {
     render(){
         return (
             <div>
-                <div>{ 'TIME: ' + this.state.gameTime }</div>
-                <div>{ 'SCORE: ' + this.state.score }</div>
+                <div>{`TIME: ${ (this.state.gameTime/1000).toFixed(1) }`}</div>
+                <div>{`SCORE: ${this.state.score }`}</div>
                 <Grid 
                     color={this.state.color}
                     snake={this.state.snake}
@@ -156,7 +156,8 @@ export default class Game extends React.Component {
                     onClick={this.start}
                     style={{
                         display: 'block',
-                        width: '100px'
+                        width: '100px',
+                        margin: '10px 0 0 150px'
                     }}
                 >
                     START
